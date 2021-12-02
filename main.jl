@@ -1,3 +1,4 @@
+import Pkg; Pkg.activate(".");
 import Corona
 using WebIO, Interact, Blink, DynamicalSystems, Plots, LabelledArrays
 
