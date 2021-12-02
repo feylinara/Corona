@@ -37,7 +37,7 @@ function SIRVD(x, p, t)
     D = x[7]
     SVector{7}(
         (-β * S * I) / population - vax * S / population + resucseptible * R,
-        (β * S * I) / population + β * Vwaned * I / population + β * immunity * V * I / population - (recovery + deaths) * I,
+        (β * S * I) / population + β * Vwaned * I / population + β * (1 - immunity) * V * I / population - (recovery + deaths) * I,
         recovery * I - resucseptible * R,
         vax * S / population - β * (1.0 - immunity) * V * I / population - vaxwane * V,
         vaxwane * V - β * Vwaned * I / population,
@@ -72,7 +72,7 @@ function model(;
             0
         end,
         resucseptible = t -> 1 / (recoveryImmunity * 30),
-        wane = t -> 1 / (vaxImmunity * 30),
+        wane = t -> 1 / vaxImmunity,
         immunity = t -> effectiveness,
         population = pop
     )
