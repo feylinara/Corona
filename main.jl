@@ -38,3 +38,7 @@ end
 w = Window()
 title(w, "Corona Simulation")
 body!(w, app);
+
+while true
+    yield()
+end
